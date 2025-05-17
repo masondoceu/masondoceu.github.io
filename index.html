@@ -1,80 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>404 Not Found</title>
-    <style>
-        @keyframes glow {
-            0% {
-                box-shadow: 0 0 50px rgba(255, 255, 255, 0.1), 
-                            0 0 70px rgba(255, 255, 255, 0.1), 
-                            0 0 80px rgba(255, 255, 255, 0.1), 
-                            0 0 100px rgba(255, 255, 255, 0.1);
-            }
-            50% {
-                box-shadow: 0 0 50px rgba(255, 255, 255, 0.3),
-                            0 0 70px rgba(255, 255, 255, 0.2), 
-                            0 0 80px rgba(255, 255, 255, 0.1), 
-                            0 0 100px rgba(255, 255, 255, 0.05);
-            }
-            100% {
-                box-shadow: 0 0 50px rgba(255, 255, 255, 0.1), 
-                            0 0 70px rgba(255, 255, 255, 0.1), 
-                            0 0 80px rgba(255, 255, 255, 0.1), 
-                            0 0 100px rgba(255, 255, 255, 0.1);
-            }
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>who is masondoceu?</title>
+  <style>
+    /* reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            background-color: #000;
-            text-align: center;
-            padding: 50px;
-            font-family: "Courier New", Courier, monospace;
-            color: #fff;
-        }
-        
-        .container {
-            width: 600px;
-            margin: 0 auto;
-        }
-        
-        h1 {
-            font-size: 40px;
-        }
-        
-        img {
-            width: 300px; /* Adjust as needed */
-            height: auto;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        
-        a {
-            display: inline-block;
-            color: #fff;
-            text-decoration: none;
-            background-color: transparent;
-            padding: 10px 20px;
-            border: 1px solid #fff; /* Thinner border */
-            border-radius: 0; /* No rounded corners */
-            transition: background-color 0.2s;
-        }
-        
-        a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-    </style>
-    <script>
-        function playSound() {
-            var sound = new Audio("./src/media/sounds/Click.wav");
-            sound.play();
-        }
-    </script>
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+      height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .terminal {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.4;
+      text-align: left;
+    }
+
+    a {
+      color: #0f0;
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    .links { margin-top: 1rem; }
+    .links div { margin-bottom: 0.5rem; }
+
+    /* prompt e cursor */
+    .prompt-line {
+      display: flex;
+      align-items: center;
+      margin-top: 2rem;
+    }
+    .prompt-line span.cmd {
+      white-space: pre;
+    }
+    .cursor {
+      display: inline-block;
+      color: #0f0;
+      animation: blink 1s step-start infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* Botão estilo terminal */
+    #toggle-music {
+      background: none;
+      border: none;
+      color: #0f0;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      padding: 0;
+    }
+    #toggle-music:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>404</h1>
-        <img src="./src/media/images/Pc_yumegamen_03-13.png" alt="Image">
-        <p>Oops! The page you are looking for does not exist.</p>
-        <a href="/" onclick="playSound()">Go Home</a>
+  <div class="terminal">
+    <div>&gt; whoami: <strong>masondoceu</strong></div>
+    <div>&gt; about:</div>
+    <div> non-professional Counter-Strike: GO, GTA Online and Touhou player</div>
+    <div> and maybe a shitty back-end programmer.</div>
+    <div> passionate about programming, operating systems and software.</div>
+    <div> currently coding in C/C++ and Python.</div>
+    <div> learning C# and Java.</div>
+    <div> politics are far-right, or—as some whiners call it—“fascist.”</div>
+
+    <div class="links">
+      <div>&gt; social:</div>
+      <div>• <a href="https://x.com/masondocu" target="_blank">X/Twitter</a></div>
+	  <div>• <a href="https://masondoceu.link/" target="_blank">Gravatar</a></div>
+      <div>• <a href="https://github.com/masondoceu" target="_blank">GitHub</a></div>
+      <div>• <a href="https://twitch.tv/masondoceu" target="_blank">twitch.tv</a></div>
+      <div>• <a href="https://stackoverflow.com/users/19332519/masondoceu" target="_blank">Stack Overflow</a></div>
+      <div>• <a href="https://youtube.com/@masondoceu" target="_blank">YouTube</a></div>
+      <div>• <a href="https://socialclub.rockstargames.com/member/masondoceu" target="_blank">Rockstar Games</a></div>
+      <div>• <a href="https://open.spotify.com/user/31qold3lu6zij25t3bo6aylrx4ny" target="_blank">Spotify</a></div>
+	  <div>• e-mail: <a href="mailto:mason@national.shitposting.agency" target="_blank">mason(at)national.shitposting.agency</a></div>
     </div>
+
+
+    <!-- botão de toggle da bgm -->
+    <button id="toggle-music">toggle background music</button>
+
+    <!-- prompt piscando o cu -->
+    <div class="prompt-line">
+      <span class="cmd">guest@web:~$ </span><span class="cursor">_</span>
+    </div>
+  </div>
+
+  <!-- loopify.js -->
+  <script src="./src/scripts/loopify.js"></script>
+  <script>
+    (function() {
+      // variável para controle do miniplayer
+      let player = null;
+      let playing = false;
+
+      // referência ao botão
+      const btn = document.getElementById('toggle-music');
+
+      btn.addEventListener('click', function() {
+        // se ainda não carregou, inicia o loopify.js
+        if (!player) {
+          loopify('./src/media/sounds/bgm.wav', function(err, p) {
+            if (err) {
+              console.error("Loopify error:", err);
+              return;
+            }
+            player = p;
+            player.play();
+            playing = true;
+            btn.textContent = 'stop background music';
+          });
+        } else {
+          // se já carregado, alterna play/stop
+          if (playing) {
+            player.stop();
+            playing = false;
+            btn.textContent = 'play background music';
+          } else {
+            player.play();
+            playing = true;
+            btn.textContent = 'stop background music';
+          }
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
+<!-- é o filhinho de papai é -->

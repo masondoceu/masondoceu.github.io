@@ -1,85 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>404 - Not Found</title>
-    <link rel="icon" type="image/x-icon" href="./src/media/icon/bern.ico">
-    <style>
-        @keyframes glow {
-            0% {
-                box-shadow: 0 0 50px rgba(255, 255, 255, 0.1), 
-                            0 0 70px rgba(255, 255, 255, 0.1), 
-                            0 0 80px rgba(255, 255, 255, 0.1), 
-                            0 0 100px rgba(255, 255, 255, 0.1);
-            }
-            50% {
-                box-shadow: 0 0 50px rgba(255, 255, 255, 0.3),
-                            0 0 70px rgba(255, 255, 255, 0.2), 
-                            0 0 80px rgba(255, 255, 255, 0.1), 
-                            0 0 100px rgba(255, 255, 255, 0.05);
-            }
-            100% {
-                box-shadow: 0 0 50px rgba(255, 255, 255, 0.1), 
-                            0 0 70px rgba(255, 255, 255, 0.1), 
-                            0 0 80px rgba(255, 255, 255, 0.1), 
-                            0 0 100px rgba(255, 255, 255, 0.1);
-            }
-        }
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>404 - Not Found</title>
+  <link rel="icon" type="image/x-icon" href="./src/media/icon/bern.ico">
+  <style>
+    @keyframes glow {
+      0% {
+        box-shadow:
+          0 0 50px rgba(255, 255, 255, 0.1),
+          0 0 70px rgba(255, 255, 255, 0.1),
+          0 0 80px rgba(255, 255, 255, 0.1),
+          0 0 100px rgba(255, 255, 255, 0.1);
+      }
+      50% {
+        box-shadow:
+          0 0 50px rgba(255, 255, 255, 0.3),
+          0 0 70px rgba(255, 255, 255, 0.2),
+          0 0 80px rgba(255, 255, 255, 0.1),
+          0 0 100px rgba(255, 255, 255, 0.05);
+      }
+      100% {
+        box-shadow:
+          0 0 50px rgba(255, 255, 255, 0.1),
+          0 0 70px rgba(255, 255, 255, 0.1),
+          0 0 80px rgba(255, 255, 255, 0.1),
+          0 0 100px rgba(255, 255, 255, 0.1);
+      }
+    }
 
-        body {
-            background-color: #000;
-            text-align: center;
-            padding: 50px;
-            font-family: "Courier New", Courier, monospace;
-            color: #fff;
-        }
-        
-        .container {
-            width: 600px;
-            margin: 0 auto;
-        }
-        
-        h1 {
-            font-size: 40px;
-        }
-        
-        img {
-            width: 300px; /* Adjust as needed */
-            height: auto;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        
-        a {
-            display: inline-block;
-            color: #fff;
-            text-decoration: none;
-            background-color: transparent;
-            padding: 10px 20px;
-            border: 1px solid #fff; /* Thinner border */
-            border-radius: 0; /* No rounded corners */
-            transition: background-color 0.2s;
-        }
-        
-        a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-    </style>
-    
-    <!-- só praaaaaaa fazer pre-load mesmo tá valeu -->
-    <audio src="./src/media/sounds/Click.wav" preload="auto"></audio>
-    
-    <script>
-        function playSound() {
-            var sound = new Audio("./src/media/sounds/Click.wav");
-            sound.play();
-        }
-    </script>
+    body {
+      background-color: #000;
+      text-align: center;
+      padding: 50px;
+      font-family: "Courier New", Courier, monospace;
+      color: #fff;
+    }
+
+    .container {
+      width: 600px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 40px;
+    }
+
+    img {
+      width: 300px;
+      height: auto;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    a {
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      background-color: transparent;
+      padding: 10px 20px;
+      border: 1px solid #fff;
+      transition: background-color 0.2s;
+    }
+
+    a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+
+  <!-- pré-load do som de clique -->
+  <audio id="click-sound" src="./src/media/sounds/Click.wav" preload="auto"></audio>
 </head>
 <body>
-    <div class="container">
-        <h1>404</h1>
-        <img src="./src/media/images/Pc_yumegamen_03-13.png" alt="Image">
-        <p>Oops! The page you are looking for does not exist.</p>
-        <a href="/" onclick="playSound()">Go Home</a>
-    </div>
+  <div class="container">
+    <h1>404</h1>
+    <img src="./src/media/images/Pc_yumegamen_03-13.png" alt="Image">
+    <p>Oops! The page you are looking for does not exist.</p>
+    <a href="/" id="go-home">Go Home</a>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const goHomeLink = document.getElementById("go-home");
+      const clickSound = document.getElementById("click-sound");
+
+      goHomeLink.addEventListener("click", function (e) {
+        e.preventDefault();               // impede navegação imediata
+        clickSound.currentTime = 0;      
+        clickSound.play().catch(console.error);
+
+        // aguarda 0,5s antes de redirecionar
+        setTimeout(() => {
+          window.location.href = goHomeLink.href;
+        }, 500);
+      });
+    });
+  </script>
 </body>
 </html>

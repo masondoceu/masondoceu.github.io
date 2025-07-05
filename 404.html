@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>404 Not Found</title>
+    <style>
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 50px rgba(255, 255, 255, 0.1), 
+                            0 0 70px rgba(255, 255, 255, 0.1), 
+                            0 0 80px rgba(255, 255, 255, 0.1), 
+                            0 0 100px rgba(255, 255, 255, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(255, 255, 255, 0.3),
+                            0 0 70px rgba(255, 255, 255, 0.2), 
+                            0 0 80px rgba(255, 255, 255, 0.1), 
+                            0 0 100px rgba(255, 255, 255, 0.05);
+            }
+            100% {
+                box-shadow: 0 0 50px rgba(255, 255, 255, 0.1), 
+                            0 0 70px rgba(255, 255, 255, 0.1), 
+                            0 0 80px rgba(255, 255, 255, 0.1), 
+                            0 0 100px rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        body {
+            background-color: #000;
+            text-align: center;
+            padding: 50px;
+            font-family: "Courier New", Courier, monospace;
+            color: #fff;
+        }
+        
+        .container {
+            width: 600px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 40px;
+        }
+        
+        img {
+            width: 300px; /* Adjust as needed */
+            height: auto;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        a {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            background-color: transparent;
+            padding: 10px 20px;
+            border: 1px solid #fff; /* Thinner border */
+            border-radius: 0; /* No rounded corners */
+            transition: background-color 0.2s;
+        }
+        
+        a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+    <script>
+        function playSound() {
+            var sound = new Audio("src/media/sounds/Click.wav");
+            sound.play();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <img src="src/media/images/Pc_yumegamen_03-13.png" alt="Image">
+        <p>Oops! The page you are looking for does not exist.</p>
+        <a href="/" onclick="playSound()">Go Home</a>
+    </div>
+</body>
+</html>

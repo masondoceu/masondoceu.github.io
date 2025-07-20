@@ -10,16 +10,22 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
+	  /* por mais engraçado que seja, eu fiz o html usando o Microsoft Edge em 90% de zoom (que é o meu default) */
+	  /* por conta disso, eu adicionei as duas opções abaixo para ficar igual ao zoom do meu MSEdge 90% */
+	  zoom: 95%; /* para edge, chromium and op*ra */
+      transform: scale(0.95);  /* para cuzilla fiofóx */
+	  
+	  width: 100%;
+	  height: 100%;
       background: #000;
       color: #0f0;
       font-family: 'Courier New', monospace;
       padding: 2rem;
-      height: 100vh;
-      overflow-x: hidden;
+	  overflow: hidden;
     }
 
     .terminal {
-      max-width: 800px;
+      max-width: 60%;
       margin: 0 auto;
       line-height: 1.4;
       text-align: left;
@@ -52,7 +58,7 @@
       50% { opacity: 0; }
     }
 
-    /* botão estilo terminal */
+    /* botão música estilo terminal */
     #toggle-music {
       background: none;
       border: none;
@@ -65,6 +71,73 @@
     }
     #toggle-music:hover {
       text-decoration: underline;
+    }
+
+    /* estilo da janela do steam */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background-color: #000;
+      border: 2px solid #0f0;
+      padding: 1.5rem;
+      width: 400px;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+      position: relative;
+    }
+
+    .modal-header {
+      border-bottom: 1px solid #0f0;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .modal-options {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-option {
+      padding: 0.5rem 1rem;
+      border: 1px solid #0f0;
+      cursor: pointer;
+      text-align: center;
+      flex: 1;
+      margin: 0 0.5rem;
+    }
+
+    .modal-option:hover {
+      background-color: rgba(0, 255, 0, 0.1);
+    }
+
+    .modal-footer {
+      text-align: center;
+    }
+
+    .modal-close {
+      padding: 0.5rem 1rem;
+      border: 1px solid #0f0;
+      cursor: pointer;
+      background: none;
+      color: #0f0;
+      font-family: 'Courier New', monospace;
+    }
+
+    .modal-close:hover {
+      background-color: rgba(0, 255, 0, 0.1);
     }
   </style>
 </head>
@@ -86,7 +159,7 @@
       <div>• <a href="https://masondoceu.link/" target="_blank">Gravatar (deprecated)</a></div>
       <div>• <a href="https://github.com/masondoceu" target="_blank">GitHub</a></div>
       <div>• <a href="https://twitch.tv/masondoceu" target="_blank">twitch.tv</a></div>
-      <div>• <a href="https://steamcommunity.com/id/bag0s/" target="_blank">Steam Community</a></div>
+      <div>• <a href="#" id="steam-link">Steam Community</a></div> <!-- modificado para abrir a janela (linha 183) -->
       <div>• <a href="https://youtube.com/@masondoceu" target="_blank">YouTube</a></div>
       <div>• <a href="https://socialclub.rockstargames.com/member/masondoceu" target="_blank">Rockstar Games <s>Social Club</s></a></div>
       <div>• <a href="https://open.spotify.com/user/31qold3lu6zij25t3bo6aylrx4ny" target="_blank">Spotify</a></div>
@@ -103,6 +176,20 @@
     <!-- prompt piscando o cu -->
     <div class="prompt-line">
       <span class="cmd">guest@web:~$ </span><span class="cursor">_</span>
+    </div>
+  </div>
+
+  <!-- janela da steam -->
+  <div id="steam-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">which one?</div>
+      <div class="modal-options">
+        <div class="modal-option" id="good-one">the good one</div>
+        <div class="modal-option" id="bad-one">the bad one</div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-close" id="modal-close">go back</button>
+      </div>
     </div>
   </div>
 
@@ -141,6 +228,40 @@
             playing = true;
             btn.textContent = 'stop background music';
           }
+        }
+      });
+
+      // controle da janela da steam
+      const steamLink = document.getElementById('steam-link');
+      const steamModal = document.getElementById('steam-modal');
+      const goodOne = document.getElementById('good-one');
+      const badOne = document.getElementById('bad-one');
+      const modalClose = document.getElementById('modal-close');
+
+      // abre a janela ao clicar na Steam
+      steamLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        steamModal.style.display = 'flex';
+      });
+
+      // fecha a janela
+      modalClose.addEventListener('click', function() {
+        steamModal.style.display = 'none';
+      });
+
+      // redirect
+      goodOne.addEventListener('click', function() {
+        window.open('https://steamcommunity.com/profiles/76561198446360902', '_blank');
+      });
+
+      badOne.addEventListener('click', function() {
+        window.open('https://steamcommunity.com/profiles/76561199483083620', '_blank');
+      });
+
+      // fecha a janela ao clicar no fundo
+      window.addEventListener('click', function(e) {
+        if (e.target === steamModal) {
+          steamModal.style.display = 'none';
         }
       });
     })();

@@ -137,6 +137,59 @@
     .modal-close:hover {
       background-color: rgba(0, 255, 0, 0.1);
     }
+
+    /* media queries para mobile */
+    @media screen and (max-width: 768px) {
+      body {
+        padding: 1rem;
+        overflow: auto;
+        zoom: 100%;
+        transform: none;
+      }
+
+      .terminal {
+        max-width: 100%;
+        font-size: 14px;
+      }
+
+      .modal-content {
+        width: 90%;
+        margin: 1rem;
+        padding: 1rem;
+      }
+
+      .modal-options {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .modal-option {
+        margin: 0;
+      }
+
+      .projects div {
+        word-wrap: break-word;
+      }
+    }
+
+    /* ajustes para telas MUITO pequenas */
+    @media screen and (max-width: 480px) {
+      body {
+        padding: 0.5rem;
+      }
+
+      .terminal {
+        font-size: 12px;
+      }
+
+      .prompt-line {
+        margin-top: 1rem;
+      }
+
+      .links div {
+        margin-bottom: 0.25rem;
+      }
+    }
   </style>
 </head>
 <body>

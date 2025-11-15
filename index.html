@@ -10,8 +10,6 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-	  /* por mais engraçado que seja, eu fiz o html usando o Microsoft Edge em 90% de zoom (que é o meu default) */
-	  /* por conta disso, eu adicionei as duas opções abaixo para ficar igual ao zoom do meu MSEdge 90% */
 	  zoom: 95%; /* para edge, chromium and op*ra */
       transform: scale(0.95);  /* para cuzilla fiofóx */
 	  
@@ -151,7 +149,6 @@
     <div>currently coding in C/C++, Java and Python.</div>
     <div>learning C# and Rust.</div>
     <div>politics are far-right, or—as some whiners call it—“fascist”.</div>
-    <!-- hello from São Paulo! -->
 
     <div class="links">
       <div>&gt; <strong>social</strong>:</div>
@@ -166,7 +163,7 @@
     </div>
 
     <div class="projects">
-      <div>&gt; <strong>projects</strong>: <a href="./arquivador-faq/">Arquivador CDC</a></div>
+      <div>&gt; <strong>projects</strong>: <a href="./arquivador-faq/">Arquivador CDC</a>, <a href="./the-csgo-archive/">The CS:GO Archive</a></div>
     </div>
 
     <!-- botão de toggle da bgm -->
@@ -270,7 +267,7 @@
 	const domain = 'national.shitposting.agency';
 	const email = user + '@' + domain;
 
-	// Cria o link de forma segura
+	// cria o link de forma modificada
 	const mailtoLink = document.createElement('a');
 	mailtoLink.href = 'mailto:' + email;
 	mailtoLink.textContent = user + '(at)' + domain;

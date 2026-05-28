@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecionando...</title>
+  <meta name="robots" content="noindex">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+
+  <!-- Fallback simples para navegadores sem JavaScript. -->
+  <meta http-equiv="refresh" content="0; url=https://masondoceu.pages.dev/">
+
+  <script>
+    (() => {
+      const TARGET_ORIGIN = "https://masondoceu.pages.dev";
+
+      function buildRedirectUrl() {
+        const current = new URL(window.location.href);
+        const target = new URL(TARGET_ORIGIN);
+
+        /*
+          Mantém o caminho, query e hash da URL antiga.
+
+          Exemplos:
+            https://masondoceu.github.io/abc
+            -> https://masondoceu.pages.dev/abc
+
+            https://masondoceu.github.io/pasta/teste.html?a=1#x
+            -> https://masondoceu.pages.dev/pasta/teste.html?a=1#x
+
+          Se você NÃO quiser manter o caminho antigo e quiser sempre mandar tudo
+          para a raiz, troque:
+            target.pathname = current.pathname;
+          por:
+            target.pathname = "/";
+        */
+
+        target.pathname = current.pathname;
+        target.search = current.search;
+        target.hash = current.hash;
+
+        return target.toString();
+      }
+
+      window.location.replace(buildRedirectUrl());
+    })();
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #111;
+      color: #f5f5f5;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      text-align: center;
+    }
+
+    a {
+      color: inherit;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p>Redirecionando para <a href="https://masondoceu.pages.dev/">https://masondoceu.pages.dev/</a>...</p>
+  </main>
+</body>
+</html>

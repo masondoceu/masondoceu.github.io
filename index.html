@@ -16,23 +16,6 @@
         const current = new URL(window.location.href);
         const target = new URL(TARGET_ORIGIN);
 
-        /*
-          Mantém o caminho, query e hash da URL antiga.
-
-          Exemplos:
-            https://masondoceu.github.io/abc
-            -> https://masondoceu.pages.dev/abc
-
-            https://masondoceu.github.io/pasta/teste.html?a=1#x
-            -> https://masondoceu.pages.dev/pasta/teste.html?a=1#x
-
-          Se você NÃO quiser manter o caminho antigo e quiser sempre mandar tudo
-          para a raiz, troque:
-            target.pathname = current.pathname;
-          por:
-            target.pathname = "/";
-        */
-
         target.pathname = current.pathname;
         target.search = current.search;
         target.hash = current.hash;
